@@ -41,7 +41,20 @@ const AddScore = () => {
       return [west, setWest];
     }
   }
-  ``
+
+  const nextRound = () => {
+    if (wind === Seat.North && round == 4) return;
+
+    const newRound = round % 4 + 1;
+    setRound(newRound)
+    if (newRound === 1) setWind(wind + 1);
+  }
+
+  const handleDraw = () => {
+    nextRound();
+    setCurrentPage("score");
+  }
+
   const handleAddScore = () => {
     if (winner === loser || !(winner && loser && score)) return;
 
@@ -66,11 +79,7 @@ const AddScore = () => {
       }
     }
 
-    if (winnerPlayer.seat !== Seat.East) {
-      const newRound = (round + 1) % 4;
-      setRound(newRound) 
-      if (newRound === 0) setWind(wind + 1);
-    }
+    if (winnerPlayer.seat !== Seat.East) nextRound();
 
     setCurrentPage("score")
   }
@@ -84,6 +93,7 @@ const AddScore = () => {
         onChange={(v) => setScore(parseInt(v.value))} value={score.toString()}
         placeholder='Points'
       />
+      <button onClick={handleDraw}>Draw</button>
       <button onClick={handleAddScore}>Add Score</button>
     </>
   )
