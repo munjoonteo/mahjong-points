@@ -7,8 +7,6 @@ import Home from './Home'
 import Players from './Players'
 import Score from './Score'
 
-import './App.css'
-
 const App = () => {
   const { currentPage } = useContext(GameContext)
 
