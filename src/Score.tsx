@@ -17,25 +17,27 @@ const Score: React.FC = () => {
 
   const showPlayer = (player: IPlayer) => {
     return (
-      <div>
-        <div>{player.name}</div>
-        <div>{player.score}</div>
-      </div>
+      <>
+        <div className="font-bold text-lg text-center">{player.name}</div>
+        <div className="text-center">{player.score}</div>
+      </>
     )
   }
 
   const isLastRound = wind === Seat.North && round == 4;
 
   return (
-    <div>
-      <div>Current Round: {getWind()} {round}</div>
-      {showPlayer(north)}
-      {showPlayer(east)}
-      {showPlayer(south)}
-      {showPlayer(west)}
-      <button disabled={isLastRound} onClick={() => setCurrentPage("addScore")}>Add score</button>
-      {isLastRound && <button onClick={() => setCurrentPage("home")}>Back to Home</button>}
-    </div>
+    <>
+      <div className="text-center underline">Current Round: {getWind()} {round}</div>
+      <div className="h-80">
+        <div className="absolute top-1/3 left-1/2 -translate-y-12">{showPlayer(north)}</div>
+        <div className="absolute top-1/3 left-1/2 translate-x-20 translate-y-12">{showPlayer(east)}</div>
+        <div className="absolute top-1/3 left-1/2 translate-y-32">{showPlayer(south)}</div>
+        <div className="absolute top-1/3 left-1/2 -translate-x-20 translate-y-12">{showPlayer(west)}</div>
+      </div>
+      <button className="text-black bg-slate-100 rounded-md w-full py-1 px-5 my-3" disabled={isLastRound} onClick={() => setCurrentPage("addScore")}>Add score</button>
+      <button className="border-2 border-slate-200 rounded-md w-full py-1 px-5 my-3" onClick={() => setCurrentPage("home")}>Back to Home</button>
+    </>
   )
 }
 

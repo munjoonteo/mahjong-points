@@ -5,6 +5,8 @@ export interface GameContextProviderProps {
 }
 
 export interface NameInputProps {
+  seat: string;
   name: string;
   setName: (newName: string) => void;
 }
+

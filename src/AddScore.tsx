@@ -8,7 +8,7 @@ import points from "./points";
 const AddScore = () => {
   const [winner, setWinner] = useState('');
   const [loser, setLoser] = useState('');
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(1);
 
   const { north, setNorth, east, setEast, south, setSouth, west, setWest, wind, setWind, round, setRound, setCurrentPage } = useContext(GameContext);
 
@@ -86,15 +86,19 @@ const AddScore = () => {
 
   return (
     <>
-      <Dropdown options={options} onChange={(w) => setWinner(w.value)} value={winner} placeholder='Winner' />
-      <Dropdown options={[...options, 'Self-Draw']} onChange={(l) => setLoser(l.value)} value={loser} placeholder='Loser' />
+      <Dropdown className="my-5" options={options} onChange={(w) => setWinner(w.value)} value={winner} placeholder='Select winner...' />
+      <Dropdown className="my-5" options={[...options, 'Self-Draw']} onChange={(l) => setLoser(l.value)} value={loser} placeholder='Select loser...' />
       <Dropdown
+        className="my-5"
         options={[...Array(12).keys()].map(x => (x + 1).toString())}
         onChange={(v) => setScore(parseInt(v.value))} value={score.toString()}
         placeholder='Points'
       />
-      <button onClick={handleDraw}>Draw</button>
-      <button onClick={handleAddScore}>Add Score</button>
+      <div className="flex">
+        <button className="text-black bg-slate-100 rounded-md w-full py-1 px-5 mr-1 my-3" onClick={handleAddScore}>Add Score</button>
+        <button className="border-2 border-slate-200 rounded-md w-full py-1 px-5 ml-1 my-3" onClick={handleDraw}>Draw</button>
+      </div>
+        <button className="text-black bg-slate-100 rounded-md w-full py-1 px-5 ml-1 my-3" onClick={() => setCurrentPage("score")}>Cancel</button>
     </>
   )
 }

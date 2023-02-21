@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import React, { useContext } from 'react'
 
 import { GameContext } from './GameContext'
 
@@ -7,7 +7,7 @@ import Home from './Home'
 import Players from './Players'
 import Score from './Score'
 
-const App = () => {
+const App: React.FC = () => {
   const { currentPage } = useContext(GameContext)
 
   const getCurrPage = () => {
@@ -24,11 +24,7 @@ const App = () => {
     }
   }
 
-  return (
-    <div className="App">
-      {getCurrPage()}
-    </div>
-  )
+  return <>{getCurrPage()}</>
 }
 
 export default App

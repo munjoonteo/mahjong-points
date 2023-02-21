@@ -33,10 +33,10 @@ const Home: React.FC = () => {
   }
 
   return (
-    <div>
-      Mahjong Points Counter
-      <button onClick={() => setCurrentPage("players")}>New Game</button>
-      <button onClick={handleLoadGame}>Load Game</button>
+    <div className="flex flex-col">
+      <div className="text-lg font-bold py-5">Mahjong Points Counter</div>
+      <button className="text-black bg-slate-100 rounded-md p-1 my-3" onClick={() => setCurrentPage("players")}>New Game</button>
+      <button className="border-2 border-slate-100 rounded-md p-1 my-3" onClick={handleLoadGame}>Load Game</button>
     </div>
   )
 }
