@@ -6,6 +6,7 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "dev": "vite",
+    "build:css": "npx tailwindcss -i src/index.css -o dist/output.css",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
